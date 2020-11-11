@@ -71,7 +71,12 @@ function getRate(weight, type) {
       else if (weight <= 13)
          return 3.4
    } else if (type.includes('package')) {
-      return 4
+      if (weight <= 4)
+         return 3.8
+      else if (weight <= 8)
+         return 4.6
+      else if (weight <= 13)
+         return 5.9
    }
 }
 
