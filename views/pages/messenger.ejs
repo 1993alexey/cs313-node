@@ -4,6 +4,115 @@
     <% include ../partials/header.ejs %>
 </head>
 <body>
+
+<div class="row">
+    <div class="col-md-8">
+        <h2>Chat Messages</h2>
+        <div class="messages"></div>
+
+        <div class="input-group send-msg">
+            <input type="text" class="form-control" id="message" placeholder="Type your message">
+            <div class="input-group-btn">
+                <button class="btn btn-default" id="btn-send-msg"><span class="glyphicon glyphicon-send"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h2>Active Users</h2>
+        <ul class="friend-list">
+            <!-- <li>
+                <a href="#" class="clearfix">
+                    <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                    <div class="friend-name">
+                        <strong>Jane Doe</strong>
+                    </div>
+                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                    <small class="time text-muted">5 mins ago</small>
+                    <small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="clearfix">
+                    <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
+                    <div class="friend-name">
+                        <strong>Kate</strong>
+                    </div>
+                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                    <small class="time text-muted">Yesterday</small>
+                    <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="clearfix">
+                    <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                    <div class="friend-name">
+                        <strong>Kate</strong>
+                    </div>
+                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                    <small class="time text-muted">Yesterday</small>
+                    <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="clearfix">
+                    <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                    <div class="friend-name">
+                        <strong>Kate</strong>
+                    </div>
+                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                    <small class="time text-muted">Yesterday</small>
+                    <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="clearfix">
+                    <img src="https://bootdey.com/img/Content/user_6.jpg" alt="" class="img-circle">
+                    <div class="friend-name">
+                        <strong>Kate</strong>
+                    </div>
+                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                    <small class="time text-muted">Yesterday</small>
+                    <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="clearfix">
+                    <img src="https://bootdey.com/img/Content/user_5.jpg" alt="" class="img-circle">
+                    <div class="friend-name">
+                        <strong>Kate</strong>
+                    </div>
+                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                    <small class="time text-muted">Yesterday</small>
+                    <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="clearfix">
+                    <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                    <div class="friend-name">
+                        <strong>Jane Doe</strong>
+                    </div>
+                </a>
+            </li> -->
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- Modal -->
     <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
@@ -27,11 +136,7 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io();
-    </script>
-
+    <script src="js/main.js"></script>
 </body>
 </html>

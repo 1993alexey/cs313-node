@@ -16,10 +16,43 @@ app
       res.render('pages/messenger')
    })
    
+
+const activeUsers = {}
+const messages = []
 io.on('connection', (socket) => {
    console.log('user connected')
+
+
+
+
+
+   
    socket.on('disconnect', () => {
-      console.log('user disconnected')
+      const user = activeUsers[socket.id]
+      socket.broadcast.emit('userDisconnected', user)
+      delete activeUsers[socket.id]
+   })
+
+   socket.on('init', name => {
+      const user = {
+         name,
+         imgUrl: `https://avatars.dicebear.com/api/male/${name}.svg?mood[]=happy`
+      }
+      activeUsers[socket.id] = user
+
+      socket.emit('init', activeUsers, messages)
+      socket.broadcast.emit('newUser', user)
+   })
+
+   socket.on('message', messageRaw => {
+      const user = activeUsers[socket.id]
+      const message = {
+         user,
+         timestamp: Date.now(),
+         message: messageRaw
+      }
+      messages.push(message)
+      io.send(message)
    })
 })
 
