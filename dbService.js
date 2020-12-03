@@ -10,7 +10,10 @@ class DbService {
             this.client.connect(err => {
                 this.db = this.client.db('messages')
                 this.collection = this.db.collection('messages')
-                this.collection.find({}).toArray((err, docs) => resolve(docs))
+                this.collection.find({}).toArray((err, docs) => {
+                    console.log('data', docs)
+                    resolve(docs)
+                })
                 console.log('connected to mongo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             });
         })
