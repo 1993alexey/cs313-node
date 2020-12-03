@@ -8,15 +8,9 @@ class DbService {
     getMessages() {
         return new Promise((resolve, reject) => {
             this.client.connect(err => {
-                if (err)
-                    throw err
                 this.db = this.client.db('messages')
                 this.collection = this.db.collection('messages')
-                this.collection.find({}).toArray((err, docs) => {
-                    console.log('data', docs)
-                    resolve(docs)
-                })
-                console.log('connected to mongo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                this.collection.find({}).toArray((err, docs) => resolve(docs))
             });
         })
     }
