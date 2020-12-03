@@ -77,10 +77,14 @@ function displayMessage(message) {
 
     const messageContainer = document.createElement('div')
     messageContainer.classList.add('message-container')
+
+    if (name == 'Me')
+        messageContainer.classList.add('darker')
+
     messageContainer.innerHTML = `
-        <img src="${message.user.imgUrl}" alt="Avatar" style="width:100%;">
+        <img src="${message.user.imgUrl}" alt="Avatar" style="width:100%;" ${name == 'Me' ? 'class="right"':''}>
         <p>${message.message}</p>
-        <span class="time-right">${name} at ${time.toLocaleTimeString()} on ${time.toLocaleDateString()}</span>
+        <span class="time-${name == 'Me' ? 'left':'right'}">${name} at ${time.toLocaleTimeString()} on ${time.toLocaleDateString()}</span>
     `
     messages.append(messageContainer)
 }

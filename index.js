@@ -4,6 +4,7 @@ const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 const path = require('path')
 const bodyParser = require('body-parser')
+const DbService = require('./dbService')
 const PORT = process.env.PORT || 5000
 
 app
@@ -18,15 +19,13 @@ app
    
 
 const activeUsers = {}
-const messages = []
+let messages = []
+const dbService = new DbService()
+dbService.getMessages().then((data) => {
+   messages = [...messages, ...data]
+})
+
 io.on('connection', (socket) => {
-   console.log('user connected')
-
-
-
-
-
-   
    socket.on('disconnect', () => {
       const user = activeUsers[socket.id]
       socket.broadcast.emit('userDisconnected', user)
@@ -52,6 +51,7 @@ io.on('connection', (socket) => {
          message: messageRaw
       }
       messages.push(message)
+      dbService.saveMessage(message)
       io.send(message)
    })
 })
